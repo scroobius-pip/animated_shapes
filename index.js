@@ -1,11 +1,6 @@
-/**
-* This is the default playground.
-* You should see a bunny spinning in the right preview pane.
-* Feel free to use this as a starting point for you own playground!
-*/
+
 
 // Create our application instance
-
 const config = {
 
 }
@@ -136,16 +131,16 @@ timerOmega = 0
 timerMaxScale = 0
 xSimplex = new ValueNoise([0,WIDTH])
 ySimplex = new ValueNoise([0,HEIGHT])
-opacitySimplex = new ValueNoise([1,100])
-strengthSimplex = new ValueNoise([300])
-maxScaleSimplex = new ValueNoise([.5,1])
+opacitySimplex = new ValueNoise([100,200])
+strengthSimplex = new ValueNoise([1,100])
+maxScaleSimplex = new ValueNoise([.4,1])
 
 app.ticker.add(()=>{
-    _x = (xSimplex.getValue(timerX+=0.03))
-    _y = (ySimplex.getValue(timerY+=0.01))
-    oS = opacitySimplex.getValue(timerOpacity+=0.001)
-    sS = strengthSimplex.getValue(timerStrength+=0.001)
-    mS = maxScaleSimplex.getValue(timerMaxScale+=0.003)
+    _x = (xSimplex.getValue(timerX+=0.001))
+    _y = (ySimplex.getValue(timerY+=0.003))
+    oS = opacitySimplex.getValue(timerOpacity+=0.1)
+    sS = strengthSimplex.getValue(timerStrength+=0.01)
+    mS = maxScaleSimplex.getValue(timerMaxScale+=0.03)
     // timerX+=0.001
    
     circleUpdater(_x,_y,oS,sS,mS)
@@ -222,19 +217,21 @@ function RGB2HTML(red, green, blue)
     return  (red << 16) + (green << 8) + blue
 }
 function getDistance(x1, x2, y1, y2) {
-    const calc2  = Math.sqrt(((x2  - x1 ) ** 2) + ((y2 - y1) ** 2))
-    return calc2
+    const calc  = Math.sqrt(((x2  - x1 ) ** 2) + ((y2 - y1) ** 2))
+    return calc
 //  return Math.cos(calc)
     // return Math.cos(calc/y1)
-    // return Math.cos(calc/y2)
+    // return Math.cos(calc/x1)
     // return x1 > y1 ? Math.cos(calc/x1): Math.cos(calc%y1)
     // return Math.tan(calc/x1) % Math.cos(calc/x2)
 //   return Math.cos(calc**3)
 // return calc
 // const calc = (Math.sin(x1)/Math.cos(x2))*(Math.sin(y1)/Math.cos(y2))
 // return Math.cosh(calc) / Math.sin(calc)
-    // return Math.tanh(calc)/Math.cosh(calc2)
+    // return Math.tanh(calc)/Math.cosh(calc)
+    // return Math.log(1/Math.sin(calc))
     // return Math.cos(x1**2 / x2 **3 ) / Math.cos(y1**10 * y2**2) 
+    // return  Math.random() < 0.5 ? Math.log(1/Math.sin(calc)) :Math.cos(x1**2 / x2 **3 ) / Math.cos(y1**10 * y2**2) 
 
 }
 
